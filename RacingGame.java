@@ -1,28 +1,54 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class RacingGame
+public class RacingGame implements ActionListener
 {
 	private JFrame content = new JFrame();
 	private Racer player = new Racer();
 	private JPanel mainPanel = new JPanel();
 	private JLabel scoreLabel = new JLabel("Score: 0");
+	private JButton playButton = new JButton("PLAY");
+	private JButton stopButton = new JButton("STOP");
+	private JPanel buttonPanel = new JPanel();
 
 
 	public RacingGame()
 	{
 		mainPanel.setLayout(new BorderLayout());
-		content.setTitle("Racing Game");
-		content.setSize(800, 700);
+		buttonPanel.setLayout(new GridLayout(1,2));
+		
 		mainPanel.add(player.getPanel());
-		scoreLabel.setPreferredSize(new Dimension(20, 20));
-		scoreLabel.setHorizontalAlignment(JLabel.LEFT);
 		mainPanel.add("North", scoreLabel);
-		content.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		mainPanel.add("South", buttonPanel);
+		buttonPanel.add("South", playButton);
+		
+		
+		buttonPanel.add("South", stopButton);
+		scoreLabel.setPreferredSize(new Dimension(20, 20));		
+		scoreLabel.setHorizontalAlignment(JLabel.LEFT);
+		
+		content.setTitle("Racing Game");
+		content.setSize(800, 700);		
+		
+		content.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
 		content.setContentPane(mainPanel);
-		content.setVisible(true);
 		
+		/*playButton.addActionListener(a);
+		public void actionPerformed(ActionEvent a)
+		{
+			if(a.getSource() == playButton)
+			{
+				
+			}
+			if(a.getSource() == stopButton)
+			{
+				
+			}
+		}*/
+
 		
+		content.setVisible(true);		
 		player.start();
 
 		while(player.isPlaying())
