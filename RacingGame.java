@@ -6,8 +6,7 @@ public class RacingGame
 	private JFrame content = new JFrame();
 	private Racer player = new Racer();
 	private JPanel mainPanel = new JPanel();
-	private JLabel scoreLabel = new JLabel("Score: ");
-	private int score = 0;
+	private JLabel scoreLabel = new JLabel("Score: 0");
 
 
 	public RacingGame()
@@ -27,7 +26,11 @@ public class RacingGame
 		player.start();
 
 		while(player.isPlaying())
-		player.update();	
+		{
+			player.update();
+			scoreLabel.setText("Score: " + player.getScore());
+		}
+
 	}
 }
 	
