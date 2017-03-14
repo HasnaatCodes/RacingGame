@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class RacingGame implements ActionListener
 {
@@ -33,20 +34,8 @@ public class RacingGame implements ActionListener
 		
 		content.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
 		content.setContentPane(mainPanel);
-		
-		/*playButton.addActionListener(a);
-		public void actionPerformed(ActionEvent a)
-		{
-			if(a.getSource() == playButton)
-			{
-				
-			}
-			if(a.getSource() == stopButton)
-			{
-				
-			}
-		}*/
-
+		playButton.addActionListener(this);
+		stopButton.addActionListener(this);
 		
 		content.setVisible(true);		
 		player.start();
@@ -58,5 +47,18 @@ public class RacingGame implements ActionListener
 		}
 
 	}
+	
+	
+		public void actionPerformed(ActionEvent a)
+		{
+			if(a.getSource() == playButton)
+			{
+				player.start();
+			}
+			if(a.getSource() == stopButton)
+			{
+				player.stop();
+			}
+		}
 }
 	
