@@ -40,11 +40,24 @@ public class RacingGame implements ActionListener
 		content.setVisible(true);		
 		player.start();
 
-		while(player.isPlaying())
+		while (true) // makes sure that the if statement can be run once the "while(player.isPlaying())" is done
 		{
-			player.update();
-			scoreLabel.setText("Score: " + player.getScore());
+			while(player.isPlaying())
+			{
+				player.update();
+				scoreLabel.setText("Score: " + player.getScore());
+				playButton.setEnabled(false);
+				stopButton.setEnabled(true);
+			}
+			
+			if (player.isPlaying() == false)
+			{
+				playButton.setEnabled(true);
+				stopButton.setEnabled(false);
+			}
 		}
+		
+		
 
 	}
 	
@@ -54,6 +67,7 @@ public class RacingGame implements ActionListener
 			if(a.getSource() == playButton)
 			{
 				player.start();
+				player.getPanel().requestFocus();
 			}
 			if(a.getSource() == stopButton)
 			{

@@ -84,7 +84,7 @@ public class Racer
         {
             // Create the player's car
             player = new Car(SCREEN_WIDTH/2, SCREEN_HEIGHT - 150, arena);
-
+			score = 0;
             // Create the initial road layout
             for (int s = road.length-1; s >= 0 ; s--)
             {
@@ -92,7 +92,7 @@ public class Racer
                 road[s].setYPosition(s*ROAD_SEGMENT_HEIGHT);
             }
 
-            score = 0;
+            
             playing = true;
         }
     }
@@ -165,10 +165,20 @@ public class Racer
      */
     private RoadSegment nextRoadSegment()
     {
-        currentRoadX += Math.random() * 2 * ROAD_CURVE_SPEED - ROAD_CURVE_SPEED;
+		if(getScore() == 0)
+		{
+		currentRoadX = SCREEN_WIDTH/2;
         RoadSegment s = new RoadSegment(currentRoadX, -ROAD_SEGMENT_HEIGHT, ROAD_SEGMENT_WIDTH, ROAD_SEGMENT_HEIGHT, arena);
         s.setYSpeed(speed);
         return s;
+		}
+		else
+		{
+		currentRoadX += Math.random() * 2 * ROAD_CURVE_SPEED - ROAD_CURVE_SPEED;
+        RoadSegment s = new RoadSegment(currentRoadX, -ROAD_SEGMENT_HEIGHT, ROAD_SEGMENT_WIDTH, ROAD_SEGMENT_HEIGHT, arena);
+        s.setYSpeed(speed);
+        return s;	
+		}        
     }
 
     /**
