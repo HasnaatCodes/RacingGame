@@ -1,9 +1,13 @@
+/**
+* This is the Main method, it creates an instance of the RacingGame class
+* This actually starts the game and runs the code in RacingGame
+*/
+
 public class Main
 {
 	public static void main(String []args)
 	{
-		RacingGame MyGame = new RacingGame();
-		
+		RacingGame MyGame = new RacingGame();		
 	}
 	
 }

@@ -1,6 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+/**
+* The code in this file sets up the game and runs it.
+*
+*/
 
 public class RacingGame implements ActionListener
 {
@@ -11,57 +15,74 @@ public class RacingGame implements ActionListener
 	private JButton playButton = new JButton("PLAY");
 	private JButton stopButton = new JButton("STOP");
 	private JPanel buttonPanel = new JPanel();
-
-
+	private boolean checkPlaying;
+	
+	/**
+	* The whole game is put together.
+	* All the windows show up and panels are added on top.
+	*/
 	public RacingGame()
 	{
-		mainPanel.setLayout(new BorderLayout());
-		buttonPanel.setLayout(new GridLayout(1,2));
-		
-		mainPanel.add(player.getPanel());
+		//The Main panel where the scoreLabel and buttonPanel are added
+		mainPanel.setLayout(new BorderLayout());		
+		mainPanel.add(player.getPanel()); //runs the getPanel method in Racer file
 		mainPanel.add("North", scoreLabel);
-		
 		mainPanel.add("South", buttonPanel);
-		buttonPanel.add("South", playButton);
 		
-		
+		//The button panel is set up and buttons are added
+		buttonPanel.setLayout(new GridLayout(1,2));
+		playButton.setPreferredSize(new Dimension(25, 25));
+		stopButton.setPreferredSize(new Dimension(25, 25));		
+		buttonPanel.add("South", playButton);		
 		buttonPanel.add("South", stopButton);
-		scoreLabel.setPreferredSize(new Dimension(20, 20));		
-		scoreLabel.setHorizontalAlignment(JLabel.LEFT);
-		
-		content.setTitle("Racing Game");
-		content.setSize(800, 700);		
-		
-		content.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
-		content.setContentPane(mainPanel);
 		playButton.addActionListener(this);
 		stopButton.addActionListener(this);
 		
-		content.setVisible(true);		
+		//A label where score is shown 
+		scoreLabel.setPreferredSize(new Dimension(40, 40));		
+		scoreLabel.setHorizontalAlignment(JLabel.LEFT);
+		
+		//Code for the main Frame Window
+		content.setTitle("Racing Game");
+		content.setSize(800, 700);			
+		content.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
+		content.setContentPane(mainPanel);
+
+		//Creates an instance of the Scoreboard class
+		Scoreboard score = new Scoreboard();		
+		
+		//Displays the main frame
+		content.setVisible(true);
+		
+		//Starts the game
 		player.start();
 
-		while (true) // makes sure that the if statement can be run once the "while(player.isPlaying())" is done
+		while (true) //makes sure that the both if statement run
 		{
-			while(player.isPlaying())
+			player.update();
+			if(player.isPlaying())
 			{
-				player.update();
 				scoreLabel.setText("Score: " + player.getScore());
 				playButton.setEnabled(false);
 				stopButton.setEnabled(true);
+				checkPlaying = false;
 			}
 			
-			if (player.isPlaying() == false)
+			if (player.isPlaying() == false && checkPlaying == false)
 			{
 				playButton.setEnabled(true);
 				stopButton.setEnabled(false);
+				score.saveScore(player.getScore());
+				checkPlaying = true;
 			}
 		}
-		
-		
-
 	}
-	
-	
+		/**
+		* This method is run when the play button or stop button is pressed. 
+		* Stop button will stop the game
+		* Play button will restart the game once stopped.
+		*
+		*/
 		public void actionPerformed(ActionEvent a)
 		{
 			if(a.getSource() == playButton)
