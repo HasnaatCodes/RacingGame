@@ -2,8 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 /**
-* The code in this file sets up the game and runs it.
+* On runtime, this class sets up the playing environment.
+* It uses Swing libraries to import various panels, frames, labels and buttons.
+* These are then used to construct the actual gameplay.
+* It also creates an instance of the Scoreboard class I created
 *
+*
+* *@author: Hasnaat Akhtar 
 */
 
 public class RacingGame implements ActionListener
@@ -79,7 +84,7 @@ public class RacingGame implements ActionListener
 	}
 		/**
 		* This method is run when the play button or stop button is pressed. 
-		* Stop button will stop the game
+		* Stop button will stop the game.
 		* Play button will restart the game once stopped.
 		*
 		*/

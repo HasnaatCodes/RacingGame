@@ -105,6 +105,7 @@ public class Racer
         if(playing)
         {
             playing = false;
+			ROAD_CURVE_SPEED = 5;
             arena.exit();
         }
     }
@@ -173,7 +174,7 @@ public class Racer
         return s;
 		}
 		
-		else if(getScore() > 0 && getScore() < 200 )
+		else if(getScore() > 0 && getScore() < 500 )
 		{
 		currentRoadX += Math.random() * 2 * ROAD_CURVE_SPEED - ROAD_CURVE_SPEED;
         RoadSegment s = new RoadSegment(currentRoadX, -ROAD_SEGMENT_HEIGHT, ROAD_SEGMENT_WIDTH, ROAD_SEGMENT_HEIGHT, arena);
@@ -182,12 +183,13 @@ public class Racer
 		}
 		else
 		{
-			speed = 10.0;
+			speed = 5.0;
+			ROAD_CURVE_SPEED = 20;			
 			currentRoadX += Math.random() * 2 * ROAD_CURVE_SPEED - ROAD_CURVE_SPEED;
 			RoadSegment s = new RoadSegment(currentRoadX, -ROAD_SEGMENT_HEIGHT, ROAD_SEGMENT_WIDTH, ROAD_SEGMENT_HEIGHT, arena);
 			s.setYSpeed(speed /*+ 4*/);
 			return s;
-		}
+		} 
     }
 
     /**

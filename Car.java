@@ -5,7 +5,7 @@
  */
 public class Car
 {
-    public static String CAR_COLOUR = "#FF0000";
+    public static String CAR_COLOUR = "#0000FF"; //#FF0000";
     public static String WHEEL_COLOUR = "#404040";
 
     private Rectangle[] parts = new Rectangle[7];
