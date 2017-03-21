@@ -11,7 +11,7 @@ import java.awt.event.*;
 * Class also utilises listeners which listen for state changing events and
 * execute methods accordingly.
 *
-*@author: Hasnaat Akhtar 
+* @author: Hasnaat Akhtar 
 */
 
 	/**

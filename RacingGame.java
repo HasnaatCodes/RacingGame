@@ -8,7 +8,7 @@ import java.awt.event.*;
 * It also creates an instance of the Scoreboard class I created
 *
 *
-* *@author: Hasnaat Akhtar 
+* @author: Hasnaat Akhtar 
 */
 
 public class RacingGame implements ActionListener

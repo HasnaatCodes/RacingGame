@@ -34,7 +34,7 @@ public class Racer
     public static final double PLAYER_SPEED = 5;
     public static final int ROAD_SEGMENT_WIDTH = 160;
     public static final int ROAD_SEGMENT_HEIGHT = 10;
-    public static /*final*/ int ROAD_CURVE_SPEED = 5;
+    public static int ROAD_CURVE_SPEED = 5;
     public static final int SCREEN_WIDTH = 800;
     public static final int SCREEN_HEIGHT = 600;
 
@@ -183,11 +183,10 @@ public class Racer
 		}
 		else
 		{
-			speed = 5.0;
 			ROAD_CURVE_SPEED = 20;			
 			currentRoadX += Math.random() * 2 * ROAD_CURVE_SPEED - ROAD_CURVE_SPEED;
 			RoadSegment s = new RoadSegment(currentRoadX, -ROAD_SEGMENT_HEIGHT, ROAD_SEGMENT_WIDTH, ROAD_SEGMENT_HEIGHT, arena);
-			s.setYSpeed(speed /*+ 4*/);
+			s.setYSpeed(speed);
 			return s;
 		} 
     }
