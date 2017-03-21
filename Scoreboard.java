@@ -118,9 +118,16 @@ public class Scoreboard implements KeyListener
 		{
 			for (int i = 0; i < 10; i++)
 			{
+				int y = 8;
 				comparisonOfScore = Integer.parseInt(scoreLabel[i].getText());
 				if (finalScore > comparisonOfScore)
 				{
+					for (int x = 9; x > i; x--)
+					{
+						playersLabel[x].setText(playersLabel[y].getText());
+						scoreLabel[x].setText(String.valueOf(Integer.parseInt(scoreLabel[y].getText())));
+						y--;
+					}
 					playersLabel[i].setText(playersLabel[10].getText());
 					scoreLabel[i].setText(String.valueOf(Integer.parseInt(scoreLabel[10].getText())));
 					break;
